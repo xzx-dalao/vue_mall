@@ -9,7 +9,9 @@ const store = new Vuex.Store({
   state: {
     cartList: []
   },
+//p212
   mutations: {
+
     goodsAddOne(state, oldProduct) {
       oldProduct.count += 1
     },
@@ -17,6 +19,8 @@ const store = new Vuex.Store({
       state.cartList.push(payload)
     }
   },
+
+//p222
   actions: {
     addCart(context, payload) {
       return new Promise((resolve, reject) => {

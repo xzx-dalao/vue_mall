@@ -3,7 +3,8 @@ module.exports = {
     // ...
     'postcss-px-to-viewport': {
       // options
-      viewportWidth: 350,
+      viewportWidth: 375,
+      viewportHeight: 667,
       viewportUnit: 'vw',
       selectorBlackList: ['tab-bar'],
       unitPrecision: 5,

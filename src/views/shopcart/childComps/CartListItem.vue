@@ -1,22 +1,23 @@
 <template>
-  <div class="cart-item">
-    <div>
-      <check-button :is-check="cartList.isCheck" @click.native="checkClick" class="check-button"></check-button>
+  <div id="shop-item">
+    <div class="item-selector">
+<CheckButton :is-check="cartList.isCheck" @click.native="checkClick"/>
     </div>
-    <div class="img">
-      <img :src="cartList.image" alt="">
+    <div class="item-img">
+      <img :src="cartList.image" alt="商品图片">
     </div>
-    <div class="info">
-      <p>{{cartList.title}}</p>
-      <p>{{cartList.desc}}</p>
-      <div>
-        <span>￥{{cartList.lowNowPrice}}</span>
-        <span>×{{cartList.count}}</span>
+    <div class="item-info">
+      <div class="item-title">{{cartList.title}}</div>
+      <div class="item-desc">商品描述: {{cartList.desc}}</div>
+      <div class="info-bottom">
+        <div class="item-price left">￥{{cartList.lowNowPrice}}</div>
+        <div class="item-count right">x{{cartList.count}}</div>
       </div>
     </div>
   </div>
 </template>
 
+ 
 <script>
   import CheckButton from "@/components/content/checkButton/CheckButton";
   export default {
@@ -41,44 +42,63 @@
 </script>
 
 <style scoped>
-  .cart-item{
-    padding: 5px;
+   #shop-item {
+    width: 100%;
     display: flex;
-    border-bottom: 1px solid #cccccc;
+    font-size: 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
   }
-  .img img{
+
+  .item-selector {
+    width: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-title, .item-desc {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .item-img {
+    padding: 5px;
+    /*border: 1px solid #ccc;*/
+  }
+
+  .item-img img {
     width: 80px;
-    height: 110px;
+    height: 100px;
+    display: block;
     border-radius: 5px;
   }
-  .info{
-    margin-left: 15px;
-  }
-  .info p:nth-child(1){
+
+  .item-info {
     font-size: 17px;
+    color: #333;
+    padding: 5px 10px;
+    position: relative;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 200px;
-    letter-spacing: 1px;
-    margin-top: 5px;
-    color: #000;
   }
-  .info p:nth-child(2){
+
+  .item-info .item-desc {
     font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 190px;
-    margin: 20px 0 30px 0;
+    color: #666;
+    margin-top: 15px;
   }
-  .info div span:nth-child(1){
-    margin-right: 110px;
-    color: #ffa500;
+
+  .info-bottom {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
   }
-  .check-button{
-    margin-top: 45px;
-    margin-right: 5px;
+
+  .info-bottom .item-price {
+    color: orangered;
   }
 
 </style>

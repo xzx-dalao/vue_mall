@@ -38,7 +38,9 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+//  mode: 'history',
+  base: '/vue/',
+mode: 'hash'
 })
 
 export default router

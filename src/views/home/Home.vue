@@ -42,8 +42,8 @@
   import GoodsList from '@/components/content/goods/GoodsList';
   import Scroll from '@/components/common/scroll/Scroll'
   import BackTop from '@/components/content/backtop/BackTop'
-
   import {getHomeMultiData, getHomeGoods} from '@/network/home'
+  import {debounce} from '@/common/utils'
 
   export default {
     components:{
@@ -79,26 +79,14 @@
     },
     mounted() {
       //3.监听item中图片加载完成
+      const refresh =debounce(this.$refs.scroll.refresh,50)
       this.$bus.$on('itemImageLoad', () => {
-        this.$refs.scroll.scroll.refresh()
+        refresh()
       })
-
-
-      
       
     },
     methods: {
-      
-      // debounce(fn, time) {
-      //   let timer = null
-      //   return function(...args) {
-      //     if(timer) clearTimeout(timer)
-      //     timer = setTimeout(() => {
-      //       fn.apply(this, args)
-      //     }, time)
-      //   }
-      // },
-
+    
       //事件监听相关方法
       tabClick(index) {
         switch(index){
@@ -112,12 +100,10 @@
             this.currentType = 'sell'
         }
         this.$refs.tabControl1.currentIndex = index
-        this.$refs.tabControl2.currentIndex = index
-      },
-
+        this.$refs.tabControl2.currentIndex = index },
       topClick() {
         this.$refs.scroll.scrollTo(0, 0, 500)
-      },
+},
       contentScroll(position) {
         // console.log(position);
         //判断BackTop是
@@ -168,6 +154,7 @@
     deactivated() {
       this.topY = this.$refs.scroll.scroll.y
       // console.log(this.topY);
+      
     },
     activated() {
       // console.log(this.topY);

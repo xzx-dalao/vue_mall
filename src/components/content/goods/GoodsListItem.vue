@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img :src="showImg" alt="" @load="imageLoad">
-    <div>
+    <img v-lazy="showImg" alt="" @load="imageLoad">  <!--懒加载 v-lazy   @load -->
+   <div>
       <p>{{goodsItem.title}}</p>
       <span class="text-active">{{goodsItem.price}}</span>
       <span><i class="collect-icon"></i>{{goodsItem.cfav}}</span>
@@ -22,6 +22,11 @@
     methods: {
       imageLoad() {
         this.$bus.$emit('itemImageLoad')
+        if(this.$route.path.indexOf('/home')){
+          this.$bus.$emit('homdeItemImgload')
+        }else if(this.$route.path.indexOf('/detail')){
+          this.$bus.$emit('detailItemLoad')
+        }
       },
       itemClick() {
         this.$router.push('/detail/' + this.goodsItem.iid)

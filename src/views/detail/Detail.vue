@@ -104,7 +104,6 @@
     methods: {
       imgLoad() {
         this.$refs.scroll.scroll.refresh()
-
         this.themeTopYs = []
         this.themeTopYs.push(0)
         this.themeTopYs.push(this.$refs.param.$el.offsetTop)
@@ -113,20 +112,20 @@
         this.themeTopYs.push(Number.MAX_VALUE)
         // console.log(this.themeTopYs);
       },
-      navClick(index) {
+      navClick(index) {//点击标题跳转到对应内容
         // console.log(index);
         this.$refs.scroll.scroll.scrollTo(0,-this.themeTopYs[index],500)
       },
-      contentScroll(position) {
-
+      
+      contentScroll(position) {//自动化标题跳转
         this.isShow = -position.y > 1000
 
         const positionY = -position.y
-        const length = this.themeTopYs.length
+        let length = this.themeTopYs.length
         for (let i = 0; i < length - 1; i++) {
           if (this.currentIndex != i && positionY >= this.themeTopYs[i] && positionY < this.themeTopYs[i+1]){
             this.currentIndex = i
-            this.$refs.nav.currentIndex = i
+            this.$refs.nav.currentIndex =  this.currentIndex
             // console.log(i);
           }
         }
@@ -139,16 +138,11 @@
         // 获取购物车需要展示的信息
 
         const product = {}
-
         product.image = this.banners[0];
-
         product.title = this.goods.title;
-
         product.desc = this.goods.desc;
-
         product.price = this.goods.price;
         product.lowNowPrice = this.goods.lowNowPrice;
-
         product.iid = this.id;
 
         // this.$store.commit('addCart',product)

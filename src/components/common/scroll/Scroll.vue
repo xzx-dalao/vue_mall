@@ -25,6 +25,7 @@
         default: false
       }
     },
+    
     mounted() {
       this.scroll = new BScroll(this.$refs.warpper,{
         click: true,
@@ -44,6 +45,12 @@
     methods: {
       scrollTo(x, y, time=300) {
         this.scroll && this.scroll.scrollTo(x, y, time);
+      },
+      refresh(){
+        this.scroll&&this.scroll.refresh()
+      },
+      finshPullUp(){
+        this.scroll&&this.scroll.finshPullUp()
       }
     },
   }

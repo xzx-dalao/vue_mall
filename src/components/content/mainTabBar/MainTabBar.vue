@@ -1,10 +1,8 @@
 <template>
   <div>
-    <keep-alive exclude="Detail">
-      <router-view></router-view>
-    </keep-alive>
+
     <tab-bar>
-      <tab-bar-item path="/home" activeColor='blue'>
+      <tab-bar-item path="/home" >
         <template v-slot:item-icon>
           <img src="~@/assets/img/tabbar/home.svg" alt="" srcset="">
         </template>
@@ -15,7 +13,7 @@
           <div>首页</div>
         </template>
       </tab-bar-item>
-      <tab-bar-item path="/category" activeColor='blue'>
+      <tab-bar-item path="/category" >
         <template v-slot:item-icon>
           <img src="~@/assets/img/tabbar/category.svg" alt="" srcset="">
         </template>
@@ -26,7 +24,7 @@
           <div>分类</div>
         </template>
       </tab-bar-item>
-      <tab-bar-item path="/shopcart" activeColor='blue'>
+      <tab-bar-item path="/shopcart" >
         <template v-slot:item-icon>
           <img src="~@/assets/img/tabbar/shopcart.svg" alt="" srcset="">
         </template>
@@ -37,7 +35,7 @@
           <div>购物车</div>
         </template>
       </tab-bar-item>
-      <tab-bar-item path="/profile" activeColor='blue'>
+      <tab-bar-item path="/profile" >
         <template v-slot:item-icon>
           <img src="~@/assets/img/tabbar/profile.svg" alt="" srcset="">
         </template>

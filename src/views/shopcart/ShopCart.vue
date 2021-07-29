@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
   .nav-bar{
-    background-color: var(--color-high-text);
+       background-color: var(--color-text);
     color: #fff;
     font-weight: bold;
   }
